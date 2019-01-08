@@ -45,7 +45,7 @@ public class StudentDAOImpl implements StudentDAO{
 		}
 		return studentList;
 	}
-
+	
 	@Override
 	public Student getStudentById(int ids) {
 		Session session = this.sessionFactory.getCurrentSession();		
@@ -63,5 +63,17 @@ public class StudentDAOImpl implements StudentDAO{
 		}
 		logger.info("Student deleted successfully, Student details="+p);
 	}
+	
+	/* ===========================================================================================
+	
+	@Override
+	public Student oneStudent(int ids) {
+		Session session = this.sessionFactory.getCurrentSession();
+		List<Student> studentList = session.createQuery("from Student").list();
+		for(Student p : studentList){
+			logger.info("Student List::"+p);
+		}
+		return studentList;
+	}*/
 	
 }

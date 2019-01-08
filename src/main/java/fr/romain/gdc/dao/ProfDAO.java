@@ -9,7 +9,7 @@ public interface ProfDAO {
 	public void addProf(Prof p);
 	public void updateProf(Prof p);
 	public List<Prof> listProf();
-	public Prof getProfById(int idp);
-	public void removeProf(int idp);
+	public Prof getProfById(int id);
+	public void removeProf(int id);
 
 }

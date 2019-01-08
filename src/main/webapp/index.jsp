@@ -3,7 +3,8 @@
 	<header>
 		<h1 class="titreHeader"> Gestion de Cours </h1>
 	</header>	
-	
+	<div id="divIndex">
+	<br><br>
 	<h2>
 		Cliquez sur un lien :
 	</h2>
@@ -13,12 +14,12 @@
 	<a href="<c:url value='/cours' />" >Afficher les cours et les sessions</a>
 		
 	<br><br><br>
-		
+	
 	<h3>
-		Espace étudiant :
+		Etudiant ? Accédez à votre ENT :
 	</h3>
-		
-	<c:url var="EntStu" value="/entStudent" ></c:url>
+	
+	<c:url var="EntStu" value="/entStu/${ids}" ></c:url>
 
 	<form action="${EntStu}">
 		<table>
@@ -29,7 +30,7 @@
 					</label>
 				</td>
 				<td>
-					<input type="number" min="0"/>
+					<input type="number" min="0" name="ids"/>
 				</td>
 				<td>
 					<input type="submit" value="<spring:message text="Valider"/>" />
@@ -41,10 +42,10 @@
 	<br><br>
 		
 	<h3>
-		Espace enseignant :
+		Enseignant ? Accédez à votre ENT :
 	</h3>
 		
-	<c:url var="EntProf" value="/entProf" ></c:url>
+	<c:url var="EntProf" value="/entProf/${idp}" ></c:url>
 
 	<form action="${EntProf}">
 		<table>
@@ -52,9 +53,10 @@
 				<td>
 					<label>
 						<spring:message text="Ecrivez votre id enseignant :"/>
-					</label>					</td>
+					</label>					
+				</td>
 				<td>
-					<input type="number" min="0"/>
+					<input type="number" min="0" name="idp"/>
 				</td>
 				<td>
 					<input type="submit" value="<spring:message text="Valider"/>" />
@@ -62,7 +64,8 @@
 			</tr>
 		</table>
 	</form>
-		
+	</div>
+	
 </body>
 	
 <%@ include file="WEB-INF/views/_include/footer.jsp" %>

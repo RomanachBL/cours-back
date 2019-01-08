@@ -15,6 +15,7 @@
 		.accueil{position: absolute; right:0; padding-right: 30px; font: normal bold 25px serif}
 		.accueil > a{text-decoration:none}
 		.accueil > a:hover{opacity:0.5}
+		#divIndex{margin-left: 2.5%}
 	</style>
 </head>
 <span class="accueil"><a href="<c:url value='/' />"> Accueil </a></span>

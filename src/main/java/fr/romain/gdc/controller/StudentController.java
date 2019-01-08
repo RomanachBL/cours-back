@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import fr.romain.gdc.model.Student;
 import fr.romain.gdc.service.StudentService;
@@ -60,4 +61,11 @@ private StudentService studentService;
         return "student";
     }
 	
+    @RequestMapping(value = "/entStu")
+	public String getOneStudent(@RequestParam(value="ids") int ids, Model model) {
+		model.addAttribute("entStudent", this.studentService.getStudentById(ids));
+		model.addAttribute("listStudent", this.studentService.listStudent());
+		return "entStudent";
+	}
+    
 }

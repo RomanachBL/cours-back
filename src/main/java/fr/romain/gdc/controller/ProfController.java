@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import fr.romain.gdc.model.Prof;
 import fr.romain.gdc.service.ProfService;
@@ -59,5 +60,11 @@ private ProfService ProfService;
         model.addAttribute("listProf", this.ProfService.listProf());
         return "prof";
     }
+    
+    @RequestMapping(value = "/entProf")
+	public String getOneProf(@RequestParam(value="idp") int idp, Model model) {
+		model.addAttribute("entProf", this.ProfService.getProfById(idp));
+		return "entProf";
+	}
 	
 }

@@ -30,8 +30,8 @@
 		<beans:property name="driverClassName" value="com.mysql.jdbc.Driver" />
 		<beans:property name="url"
 			value="jdbc:mysql://localhost:3306/gestioncours" />
-		<beans:property name="username" value="root" />
-		<beans:property name="password" value="roro" />
+		<beans:property name="username" value="roro" />
+		<beans:property name="password" value="yoyo" />
 	</beans:bean>
 
 	<!-- =============== Hibernate 4 SessionFactory Bean definition ================= -->
@@ -42,6 +42,7 @@
 			<beans:list>
 				<beans:value>fr.romain.gdc.model.Student</beans:value>
 				<beans:value>fr.romain.gdc.model.Prof</beans:value>
+				<beans:value>fr.romain.gdc.model.Cours</beans:value>
 			</beans:list>
 		</beans:property>
 		<beans:property name="hibernateProperties">
@@ -67,6 +68,14 @@
 	</beans:bean>
 	<beans:bean id="ProfService" class="fr.romain.gdc.service.ProfServiceImpl">
 		<beans:property name="ProfDAO" ref="ProfDAO"></beans:property>
+	</beans:bean>
+	
+	<!--  ============= Bean DAO de Cours ================== -->
+	<beans:bean id="CoursDAO" class="fr.romain.gdc.dao.CoursDAOImpl">
+		<beans:property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
+	</beans:bean>
+	<beans:bean id="CoursService" class="fr.romain.gdc.service.CoursServiceImpl">
+		<beans:property name="CoursDAO" ref="CoursDAO"></beans:property>
 	</beans:bean>
 	
 	<context:component-scan base-package="fr.romain.gdc" />

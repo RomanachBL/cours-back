@@ -11,5 +11,6 @@ public interface StudentDAO {
 	public List<Student> listStudent();
 	public Student getStudentById(int ids);
 	public void removeStudent(int ids);
-
+	
+	/*public Student oneStudent(int ids);*/
 }
