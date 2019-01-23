@@ -1,12 +1,14 @@
 package fr.romain.gdc.service;
 
 import java.util.List;
+import java.util.Set;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import fr.romain.gdc.dao.StudentDAO;
 import fr.romain.gdc.model.Student;
+import fr.romain.gdc.model.SessionCours;
 
 @Service
 public class StudentServiceImpl implements StudentService{
@@ -46,5 +48,18 @@ public class StudentServiceImpl implements StudentService{
 	public void removeStudent(int ids) {
 		this.studentDAO.removeStudent(ids);
 	}
+	
+	@Override
+	@Transactional
+	public Set<SessionCours> listSessions(){
+		return this.studentDAO.listSessions();
+	}
+	
+	@Override
+	@Transactional
+	public SessionCours getSessionById(int idsess) {
+		return this.studentDAO.getSessionById(idsess);
+	}
+
 	
 }

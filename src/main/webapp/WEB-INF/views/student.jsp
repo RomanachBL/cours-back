@@ -6,6 +6,7 @@
 		Liste des étudiants
 	</h2>
 	
+	<!-- Table qui permet d'afficher la liste de tous les étudiants. On utilise la variable listStudent qu'on a crée dans le controlleur -->
 	<c:if test="${!empty listStudent}">
 		<table class="tg">
 		<tr>
@@ -34,9 +35,11 @@
 		Ajouter / modifier un étudiant
 	</h3>
 	
+	<!-- Formulaire qui permet de créer un étudiant -->
 	<c:url var="addAction" value="/student/add" ></c:url>
 	<form:form action="${addAction}" commandName="student">
 	<table>
+		<!-- Regarde si, au chargement de la page, il y a un nom. Si non alors on ne demande pas de rentrer l'id (car il est auto_incrémenté). Sinon on met l'id de celui qu'on veut modifier -->
 		<c:if test="${!empty student.noms}">
 		<tr>
 			<td>

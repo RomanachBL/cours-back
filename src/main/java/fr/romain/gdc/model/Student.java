@@ -1,10 +1,18 @@
 package fr.romain.gdc.model;
 
+import java.util.HashSet;
+import java.util.Set;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -17,6 +25,20 @@ public class Student {
 	private String noms;
 	private String prenoms;
 	
+	@ManyToMany(targetEntity = SessionCours.class, cascade = { CascadeType.ALL }, fetch = FetchType.EAGER )
+	@JoinTable(name = "Inscription", 
+				joinColumns = { @JoinColumn(name = "ids") }, 
+				inverseJoinColumns = { @JoinColumn(name = "idsess") })
+	private Set<SessionCours> inscSessions = new HashSet<SessionCours>();
+	
+	public Set<SessionCours> getInscSessions() {
+		return inscSessions;
+	}
+
+	public void setInscSessions(Set<SessionCours> inscSessions) {
+		this.inscSessions = inscSessions;
+	}
+
 	public int getIds() {
 		return ids;
 	}
@@ -41,9 +63,5 @@ public class Student {
 		this.prenoms = prenoms;
 	}
 	
-	@Override
-	public String toString(){
-		return "ids="+ids+", noms="+noms+", prenoms="+prenoms;
-	}
 	
 }

@@ -1,4 +1,4 @@
-<%@ include file="_include/header.jsp" %>
+	<%@ include file="_include/header.jsp" %>
 
 <body>
 	
@@ -15,6 +15,7 @@
 			<th width="200">Compétences</th>
 			<th width="60">Edit</th>
 			<th width="60">Delete</th>
+			<th width="200">Les sessions</th>
 		</tr>
 		<c:forEach items="${listCours}" var="cours">
 			<tr>
@@ -24,6 +25,16 @@
 				<td>${cours.competences}</td>
 				<td><a href="<c:url value='/editCours/${cours.idc}' />" >Edit</a></td>
 				<td><a href="<c:url value='/removeCours/${cours.idc}' />" >Delete</a></td>
+				<td>
+					<!-- Variable compteur que l'on incrémente afin de pouvoir afficher le numéro de la session (n°1, n°2 etc ..) -->
+					<c:set var="cpt" value="1" />
+					<c:forEach items="${cours.getSessions()}" var="sess">
+						<c:if test="${sess.getUnCours().idc.equals(cours.idc)}">
+							<a href="<c:url value='/sessDet/${sess.idsess}' />" >N°${cpt}</a>
+							<c:set var="cpt" value="${cpt + 1}" />
+						</c:if>
+					</c:forEach>
+				</td>
 			</tr>
 		</c:forEach>
 		</table>
@@ -36,7 +47,7 @@
 		Ajouter / modifier un cours
 	</h3>
 	<h5>
-		(pour add/edit/delete une session, se rendre sur un "Espace Enseignant")	
+		(pour add/delete une session, se rendre sur l'espace de l'enseignant concerné)	
 	</h5>
 	<br>
 	<c:url var="addAction" value="/cours/add" ></c:url>

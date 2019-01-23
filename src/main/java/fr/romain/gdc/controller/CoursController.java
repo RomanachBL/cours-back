@@ -15,6 +15,7 @@ import fr.romain.gdc.service.CoursService;
 @Controller
 public class CoursController {
 
+	//Vers les fonctions de CoursServices
 private CoursService CoursService;
 	
 	@Autowired(required=true)
@@ -35,10 +36,8 @@ private CoursService CoursService;
 	public String addCours(@ModelAttribute("cours") Cours p){
 		
 		if(p.getIdc() == 0){
-			//new person, add it
 			this.CoursService.addCours(p);
 		}else{
-			//existing person, call update
 			this.CoursService.updateCours(p);
 		}
 		
@@ -59,5 +58,13 @@ private CoursService CoursService;
         model.addAttribute("listCours", this.CoursService.listCours());
         return "cours";
     }
-	
+
+    
+    @RequestMapping(value = "/sessDet/{idsess}")
+	public String getOneSession(@PathVariable("idsess") int idsess, Model model) {
+		model.addAttribute("sessDet", this.CoursService.getSessionById(idsess));
+		return "sessDet";
+	}
+    
+    
 }

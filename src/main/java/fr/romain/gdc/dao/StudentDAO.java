@@ -1,7 +1,9 @@
 package fr.romain.gdc.dao;
 
 import java.util.List;
+import java.util.Set;
 
+import fr.romain.gdc.model.SessionCours;
 import fr.romain.gdc.model.Student;
 
 public interface StudentDAO {
@@ -12,5 +14,6 @@ public interface StudentDAO {
 	public Student getStudentById(int ids);
 	public void removeStudent(int ids);
 	
-	/*public Student oneStudent(int ids);*/
+	public Set<SessionCours> listSessions();
+	public SessionCours getSessionById(int idsess);
 }

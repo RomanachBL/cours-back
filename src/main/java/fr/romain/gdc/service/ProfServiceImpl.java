@@ -7,6 +7,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import fr.romain.gdc.dao.ProfDAO;
 import fr.romain.gdc.model.Prof;
+import fr.romain.gdc.model.SessionCours;
 
 @Service
 public class ProfServiceImpl implements ProfService{
@@ -45,6 +46,18 @@ public class ProfServiceImpl implements ProfService{
 	@Transactional
 	public void removeProf(int idp) {
 		this.ProfDAO.removeProf(idp);
+	}
+
+	@Override
+	@Transactional
+	public void addSession(SessionCours p) {
+		this.ProfDAO.addSession(p);
+	}
+	
+	@Override
+	@Transactional
+	public void removeSession(int idsess) {
+		this.ProfDAO.removeSession(idsess);
 	}
 	
 }

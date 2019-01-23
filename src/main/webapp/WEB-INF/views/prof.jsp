@@ -1,6 +1,8 @@
 <%@ include file="_include/header.jsp" %>
 
 <body>
+
+	<!-- Pas beaucoup de commentaires = Mêmes principes que dans student.jsp -->
 	
 	<h2>
 		Liste des professeurs

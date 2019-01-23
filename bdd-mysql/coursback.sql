@@ -28,7 +28,7 @@ CREATE TABLE `Cours` (
   `resume` varchar(200) NOT NULL,
   `competences` varchar(100) NOT NULL,
   PRIMARY KEY (`idc`)
-) ENGINE=InnoDB AUTO_INCREMENT=1005 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=1007 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -37,7 +37,7 @@ CREATE TABLE `Cours` (
 
 LOCK TABLES `Cours` WRITE;
 /*!40000 ALTER TABLE `Cours` DISABLE KEYS */;
-INSERT INTO `Cours` VALUES (1000,'Français','Cours de français','Maitrise parfaite écrit et oral'),(1001,'Latin','Cours de Latin','Maitrises de base de cette langue morte'),(1002,'Mathématiques','Cours de maths','Maitrise arithmétique avancé'),(1003,'Physique Chimie','Cours de physique chimie','Maitrise physique et chimie organique'),(1004,'Histoire Géographie','Cours d histoire géographie','Compétences en histoire et géographie de l an 0 à nos jours');
+INSERT INTO `Cours` VALUES (1000,'Français','Cours de français','Maitrise parfaite écrit et oral'),(1001,'Latin','Cours de Latin','Maitrises de base de cette langue morte'),(1002,'Mathématiques','Cours de maths','Maitrise arithmétique avancé'),(1003,'Physique Chimie','Cours de physique chimie','Maitrise physique et chimie organique'),(1004,'Histoire Géographie','Cours d histoire géographie','Compétences en histoire et géographie de l an 0 à nos jours'),(1005,'Anglais','Cours d anglais','Maitrise courante écrit et oral');
 /*!40000 ALTER TABLE `Cours` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -64,7 +64,7 @@ CREATE TABLE `Inscription` (
 
 LOCK TABLES `Inscription` WRITE;
 /*!40000 ALTER TABLE `Inscription` DISABLE KEYS */;
-INSERT INTO `Inscription` VALUES (100,2000);
+INSERT INTO `Inscription` VALUES (100,2000),(101,2000),(103,2000),(103,2001),(104,2000);
 /*!40000 ALTER TABLE `Inscription` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -91,7 +91,7 @@ CREATE TABLE `ListeSpe` (
 
 LOCK TABLES `ListeSpe` WRITE;
 /*!40000 ALTER TABLE `ListeSpe` DISABLE KEYS */;
-INSERT INTO `ListeSpe` VALUES (200,1002),(201,1000),(201,1001),(202,1003),(203,1004);
+INSERT INTO `ListeSpe` VALUES (200,1002),(201,1000),(201,1001),(203,1004),(203,1005);
 /*!40000 ALTER TABLE `ListeSpe` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -132,13 +132,13 @@ CREATE TABLE `SessionCours` (
   `idc` int(11) DEFAULT NULL,
   `idp` int(11) DEFAULT NULL,
   `datedeb` date NOT NULL,
-  `duree` int(11) NOT NULL,
+  `semaines` int(11) DEFAULT NULL,
   PRIMARY KEY (`idsess`),
   KEY `idc` (`idc`),
   KEY `idp` (`idp`),
   CONSTRAINT `SessionCours_ibfk_1` FOREIGN KEY (`idc`) REFERENCES `Cours` (`idc`),
   CONSTRAINT `SessionCours_ibfk_2` FOREIGN KEY (`idp`) REFERENCES `Prof` (`idp`)
-) ENGINE=InnoDB AUTO_INCREMENT=2001 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2004 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -147,7 +147,7 @@ CREATE TABLE `SessionCours` (
 
 LOCK TABLES `SessionCours` WRITE;
 /*!40000 ALTER TABLE `SessionCours` DISABLE KEYS */;
-INSERT INTO `SessionCours` VALUES (2000,1002,200,'0000-00-00',89);
+INSERT INTO `SessionCours` VALUES (2000,1002,200,'2019-01-01',10),(2001,1004,203,'2019-02-02',12),(2002,1001,201,'2019-02-01',6),(2003,1002,201,'2019-05-01',10);
 /*!40000 ALTER TABLE `SessionCours` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -185,4 +185,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-01-07 19:14:32
+-- Dump completed on 2019-01-23 16:02:31

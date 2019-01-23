@@ -3,7 +3,7 @@
 <footer class="footer">
     <div>
         <p>
-            Gestion de Cours - LEE Project 2018/2019
+            Gestion de Cours (cours-back) - LEE Project 2019
             &copy; <a href="<c:url value='/' />">Romain Carrey</a>
             
         </p>

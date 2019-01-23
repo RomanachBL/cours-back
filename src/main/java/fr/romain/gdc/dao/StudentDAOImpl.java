@@ -1,6 +1,8 @@
 package fr.romain.gdc.dao;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -8,6 +10,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
 
+import fr.romain.gdc.model.SessionCours;
 import fr.romain.gdc.model.Student;
 
 @Repository
@@ -34,6 +37,7 @@ public class StudentDAOImpl implements StudentDAO{
 		session.update(p);
 		logger.info("Student updated successfully, Student Details="+p);
 	}
+	
 
 	@SuppressWarnings("unchecked")
 	@Override
@@ -64,16 +68,30 @@ public class StudentDAOImpl implements StudentDAO{
 		logger.info("Student deleted successfully, Student details="+p);
 	}
 	
-	/* ===========================================================================================
+	/* ========== Sessions =================== */
 	
+	// Récupérer la liste de toutes les sessions
+	@SuppressWarnings("unchecked")
 	@Override
-	public Student oneStudent(int ids) {
+	public Set<SessionCours> listSessions() {
 		Session session = this.sessionFactory.getCurrentSession();
-		List<Student> studentList = session.createQuery("from Student").list();
-		for(Student p : studentList){
-			logger.info("Student List::"+p);
+		List<SessionCours> tmp = session.createQuery("from SessionCours").list();
+		Set<SessionCours> sessionList = new HashSet<SessionCours>(tmp); 
+		for(SessionCours p : sessionList){
+			logger.info("session List::"+p);
 		}
-		return studentList;
-	}*/
+		return sessionList;
+	}
+	
+	// Récupérer une session bien précise selon l'id
+	@Override
+	public SessionCours getSessionById(int idsess) {
+		Session session = this.sessionFactory.getCurrentSession();		
+		SessionCours p = (SessionCours) session.load(SessionCours.class, new Integer(idsess));
+		logger.info("SessionCours loaded successfully, SessionCours details="+p);
+		return p;
+	}
+	
+
 	
 }

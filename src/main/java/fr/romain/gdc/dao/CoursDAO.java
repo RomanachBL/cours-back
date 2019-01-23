@@ -3,6 +3,7 @@ package fr.romain.gdc.dao;
 import java.util.List;
 
 import fr.romain.gdc.model.Cours;
+import fr.romain.gdc.model.SessionCours;
 
 public interface CoursDAO {
 	
@@ -12,4 +13,5 @@ public interface CoursDAO {
 	public Cours getCoursById(int id);
 	public void removeCours(int id);
 
+	public SessionCours getSessionById(int id);
 }

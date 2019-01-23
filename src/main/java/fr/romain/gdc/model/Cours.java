@@ -1,10 +1,15 @@
 package fr.romain.gdc.model;
 
+import java.util.Set;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -18,6 +23,28 @@ public class Cours {
 	private String resume;
 	private String competences;
 	
+	@OneToMany(mappedBy="unCours", fetch = FetchType.EAGER)
+	private Set<SessionCours> sessions;
+	
+	@ManyToMany(mappedBy = "speCours")
+	private Set<Prof> lesProfs;
+	
+	public Set<Prof> getLesProfs() {
+		return lesProfs;
+	}
+
+	public void setLesProfs(Set<Prof> lesProfs) {
+		this.lesProfs = lesProfs;
+	}
+	
+	public Set<SessionCours> getSessions() {
+		return sessions;
+	}
+
+	public void setSessions(Set<SessionCours> sessions) {
+		this.sessions = sessions;
+	}
+
 	public int getIdc() {
 		return idc;
 	}

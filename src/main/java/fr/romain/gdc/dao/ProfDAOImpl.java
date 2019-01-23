@@ -9,6 +9,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
 
 import fr.romain.gdc.model.Prof;
+import fr.romain.gdc.model.SessionCours;
 
 @Repository
 public class ProfDAOImpl implements ProfDAO{
@@ -63,6 +64,26 @@ public class ProfDAOImpl implements ProfDAO{
 		}
 		logger.info("Prof deleted successfully, Prof details="+p);
 	}
+
+	// Fonctions sur les SessionCours
+		
+	// Pour ajouter une session avec save
+	@Override
+	public void addSession(SessionCours p) {
+		Session session = this.sessionFactory.getCurrentSession();
+		session.save(p);
+		logger.info("Session saved successfully, Prof Details="+p);
+	}
 	
+	// Pour supprimer une session avec delete
+	@Override
+	public void removeSession(int idsess) {
+		Session session = this.sessionFactory.getCurrentSession();
+		SessionCours p = (SessionCours) session.load(SessionCours.class, new Integer(idsess));
+		if(null != p){
+			session.delete(p);
+		}
+		logger.info("SessionCours deleted successfully, SessionCours details="+p);
+	}
 	
 }

@@ -9,6 +9,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
 
 import fr.romain.gdc.model.Cours;
+import fr.romain.gdc.model.SessionCours;
 
 @Repository
 public class CoursDAOImpl implements CoursDAO{
@@ -63,5 +64,16 @@ public class CoursDAOImpl implements CoursDAO{
 		}
 		logger.info("Cours deleted successfully, Cours details="+p);
 	}
+	
+	// Permet de récupérer la liste de toutes les SessionCours
+	
+	@Override
+	public SessionCours getSessionById(int id) {
+		Session session = this.sessionFactory.getCurrentSession();		
+		SessionCours p = (SessionCours) session.load(SessionCours.class, new Integer(id));
+		logger.info("SessionCours loaded successfully, Cours details="+p);
+		return p;
+	}
+
 
 }

@@ -43,6 +43,7 @@
 				<beans:value>fr.romain.gdc.model.Student</beans:value>
 				<beans:value>fr.romain.gdc.model.Prof</beans:value>
 				<beans:value>fr.romain.gdc.model.Cours</beans:value>
+				<beans:value>fr.romain.gdc.model.SessionCours</beans:value>
 			</beans:list>
 		</beans:property>
 		<beans:property name="hibernateProperties">
@@ -78,6 +79,14 @@
 		<beans:property name="CoursDAO" ref="CoursDAO"></beans:property>
 	</beans:bean>
 	
+	<!--  ============= Bean DAO de SessionCours ================== 
+	<beans:bean id="SessionDAO" class="fr.romain.gdc.dao.SessionDAOImpl">
+		<beans:property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
+	</beans:bean>
+	<beans:bean id="SessionService" class="fr.romain.gdc.service.SessionServiceImpl">
+		<beans:property name="SessionDAO" ref="SessionDAO"></beans:property>
+	</beans:bean>
+-->
 	<context:component-scan base-package="fr.romain.gdc" />
 	
 	<tx:annotation-driven transaction-manager="transactionManager"/>

@@ -7,6 +7,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import fr.romain.gdc.dao.CoursDAO;
 import fr.romain.gdc.model.Cours;
+import fr.romain.gdc.model.SessionCours;
 
 @Service
 public class CoursServiceImpl implements CoursService {
@@ -46,5 +47,12 @@ public class CoursServiceImpl implements CoursService {
 	public void removeCours(int id) {
 		this.CoursDAO.removeCours(id);
 	}
+	
+	@Override
+	@Transactional
+	public SessionCours getSessionById(int id) {
+		return this.CoursDAO.getSessionById(id);
+	}
+
 
 }

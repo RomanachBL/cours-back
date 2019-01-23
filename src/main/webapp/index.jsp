@@ -1,7 +1,7 @@
 <%@ include file="WEB-INF/views/_include/header.jsp" %>
 <body>
 	<header>
-		<h1 class="titreHeader"> Gestion de Cours </h1>
+		<h1 class="titreHeader"> Cours-Back </h1>
 	</header>	
 	<div id="divIndex">
 	<br><br>
